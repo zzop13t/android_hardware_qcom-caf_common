@@ -14,4 +14,7 @@ else ifneq ($(filter $(UM_6_12_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     include device/qcom/sepolicy_vndr/sm8850/SEPolicy.mk
 endif
 
--include device/lineage/sepolicy/qcom/sepolicy.mk
+# Abyss: 原来这里 -include device/lineage/sepolicy/qcom/sepolicy.mk。
+# 那份策略里的 lineage 内容（hal_lineage_* / lineage_*_service / ro.lineage.*）在本 ROM 里没有对应用户，
+# 已复制一份去掉这些内容到 hardware/oplus/sepolicy/qcom，类型定义与 m4 映射保持不变。
+include hardware/oplus/sepolicy/qcom/sepolicy.mk
